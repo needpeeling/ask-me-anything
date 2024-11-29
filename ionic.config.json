@@ -1,0 +1,7 @@
+{
+  "name": "ask-me-anything",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
