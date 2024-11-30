@@ -9,9 +9,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input labelPlacement="stacked" label="Title" placeholder="Your title"></ion-input>
-
-  </ion-item>
-</ion-content>
+@if (isPageReady()) {
+  <ion-content class="ion-padding">
+    <form [formGroup]="form">
+      <ion-input class="input-title" type="text" formControlName="title" label-placement="stacked" label="Title" placeholder="Your title"></ion-input>
+      <ion-select formControlName="categories" aria-label="Categories" label-placement="stacked" placeholder="Select categories" [multiple]="true">
+        @for (category of categories; track category) {
+          <ion-select-option [value]="category.name">{{ category.label }}</ion-select-option>
+        }
+      </ion-select>
+      <ion-textarea formControlName="content" auto-grow label-placement="stacked" label="Content" placeholder="Your content"></ion-textarea>
+    </form>
+  </ion-content>
+}
