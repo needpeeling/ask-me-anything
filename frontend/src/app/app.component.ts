@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonApp, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonButton } from '@ionic/angular/standalone';
+import { IonApp, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonButton, IonTitle, IonToolbar, IonHeader, IonButtons } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { home, add, chatbubble, person } from 'ionicons/icons';
+import { home, add, chatbubble, person, help, chatbubblesOutline, personOutline, homeOutline } from 'ionicons/icons';
 import { ModalController } from '@ionic/angular';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { TitleService } from './services/shared/title.service';
@@ -18,7 +18,7 @@ export class AppComponent {
     private modalController: ModalController,
     public titleService: TitleService
   ) {
-    addIcons({ home, add, chatbubble, person });
+    addIcons({ homeOutline, add, chatbubblesOutline, personOutline, help });
   }
 
   async createPost() {

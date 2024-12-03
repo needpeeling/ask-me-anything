@@ -13,14 +13,12 @@ import { TitleService } from 'src/app/services/shared/title.service';
 })
 export class ProfileComponent {
   title: string = 'Profile';
+
   constructor(
     private titleService: TitleService
-  ) {
-  }
+  ) {}
 
   ionViewWillEnter(): void {
     this.titleService.setTitle(this.title);
-
   }
-
 }
