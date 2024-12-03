@@ -1,28 +1,22 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AskMeComponent } from './components/ask-me/ask-me.component';
-import { communityComponent } from './components/community/community.component';
+import { HomeComponent } from './components/home/home.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 export const routes: Routes = [
   { 
     path: '', 
-    redirectTo: 'community', 
+    redirectTo: 'home', 
     pathMatch: 'full' 
   },
   {
-    path: 'community',
-    component: communityComponent
+    path: 'home',
+    component: HomeComponent
     // loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {
     path: 'profile',
     component: ProfileComponent
-    // loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
-  },
-  {
-    path: 'ask-me',
-    component: AskMeComponent
     // loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {

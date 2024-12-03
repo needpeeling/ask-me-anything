@@ -1,7 +1,7 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button default-href="community" (click)="close()"></ion-back-button>
+      <ion-back-button default-href="home" (click)="close()"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
@@ -20,11 +20,16 @@
   </ion-card-header>
   <ion-card-content>
     {{ post.content }}
-    <div class="div-categories">
-      @for(category of post.categories; track category) {
-        <ion-chip [color]="post.color" >{{ category.label }}</ion-chip>
-      }
-    </div>
+    <ion-buttons slot="secondary">
+      <ion-button fill="outline">
+        <ion-icon slot="start" name="heart-outline"></ion-icon>
+        {{ post.actions.likes }}
+      </ion-button>
+      <ion-button fill="outline">
+        <ion-icon slot="start" name="chatbox-outline"></ion-icon>
+        {{ post.actions.comments }}
+      </ion-button>
+    </ion-buttons>
   </ion-card-content>
 </ion-card>
 <ion-footer>

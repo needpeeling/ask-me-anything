@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip, ModalController, IonContent } from "@ionic/angular/standalone";
+import { IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip, ModalController, IonContent, IonIcon, IonButton, IonButtons } from "@ionic/angular/standalone";
 import { Subject, takeUntil } from 'rxjs';
-import { testCommunity } from 'src/app/data/test/posts';
-import { PostCommunity } from 'src/app/types/post';
+import { testPosts } from 'src/app/data/test/posts';
+import { Post } from 'src/app/types/post';
 import { ViewPostComponent } from '../view-post/view-post.component';
 import { TitleService } from 'src/app/services/shared/title.service';
+import { addIcons } from 'ionicons';
+import { chatboxOutline, heartOutline } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-community',
-  templateUrl: './community.component.html',
-  styleUrls: ['./community.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [IonContent,  IonChip, IonAvatar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
+  imports: [IonButtons, IonContent, IonAvatar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonIcon
   ]
 })
-export class communityComponent  implements OnInit {
-  posts: PostCommunity[] = testCommunity;
+export class HomeComponent  implements OnInit {
+  posts: Post[] = testPosts;
   destroy$: Subject<void> = new Subject();
-  title: string = 'Community';
+  title: string = 'Home';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,6 +28,7 @@ export class communityComponent  implements OnInit {
     private router: Router,
     private titleService: TitleService
   ) {
+    addIcons({ chatboxOutline, heartOutline })
   }
 
   ngOnInit(): void {

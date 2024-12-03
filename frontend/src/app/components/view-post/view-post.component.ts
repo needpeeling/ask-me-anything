@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {
-  IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip, IonInput,
-  IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, ModalController, IonFooter
+  IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonInput,
+  IonHeader, IonToolbar, IonTitle, IonBackButton, IonButtons, ModalController, IonFooter,
+  IonButton,
+  IonIcon
 } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
-import { arrowBack, arrowBackCircle } from 'ionicons/icons';
-import { testViewPost } from 'src/app/data/test/posts';
-import { PostCommunityView } from 'src/app/types/post';
+import { arrowBack, arrowBackCircle, chatboxOutline, heartOutline } from 'ionicons/icons';
+import { testPostView } from 'src/app/data/test/posts';
+import { PostView } from 'src/app/types/post';
 
 @Component({
   selector: 'app-view-post',
@@ -14,18 +16,18 @@ import { PostCommunityView } from 'src/app/types/post';
   styleUrls: ['./view-post.component.scss'],
   standalone: true,
   imports: [
-    IonFooter, IonBackButton, IonButtons, IonTitle, IonToolbar, IonHeader,  IonChip, IonAvatar, IonCard, IonCardHeader, 
+    IonFooter, IonBackButton, IonButtons, IonTitle, IonToolbar, IonHeader, IonIcon, IonButtons, IonButton, IonAvatar, IonCard, IonCardHeader, 
     IonCardTitle, IonCardSubtitle, IonCardContent, IonInput
   ]
 })
 export class ViewPostComponent {
   title: string = 'View Post'
-  post: PostCommunityView = testViewPost;
+  post: PostView = testPostView;
 
   constructor(
     private modalController: ModalController
   ) {
-    addIcons({ arrowBackCircle, arrowBack });
+    addIcons({ arrowBackCircle, arrowBack, chatboxOutline, heartOutline });
   }
 
   ionViewWillEnter() {
