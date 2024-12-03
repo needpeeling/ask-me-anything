@@ -14,4 +14,4 @@ export type UserAskMe = UserCore & {
     achievements: Achievement[];
 }
 
-export type UserPostFeed = UserCore;
+export type UserCommunity = UserCore;

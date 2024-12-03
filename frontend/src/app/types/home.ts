@@ -1,1 +1,0 @@
-export type HomeTabSelection = 'feed' | 'ask-me';

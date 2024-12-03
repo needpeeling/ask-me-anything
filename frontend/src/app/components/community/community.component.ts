@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip, ModalController, IonContent, IonHeader, IonToolbar, IonTitle } from "@ionic/angular/standalone";
+import { IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip, ModalController, IonContent } from "@ionic/angular/standalone";
 import { Subject, takeUntil } from 'rxjs';
-import { testFeed } from 'src/app/data/test/posts';
-import { PostFeed } from 'src/app/types/post';
+import { testCommunity } from 'src/app/data/test/posts';
+import { PostCommunity } from 'src/app/types/post';
 import { ViewPostComponent } from '../view-post/view-post.component';
 import { TitleService } from 'src/app/services/shared/title.service';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.scss'],
+  selector: 'app-community',
+  templateUrl: './community.component.html',
+  styleUrls: ['./community.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonToolbar, IonHeader, IonContent,  IonChip, IonAvatar, IonCard, IonCardHeader, 
-    IonCardTitle, IonCardSubtitle, IonCardContent
+  imports: [IonContent,  IonChip, IonAvatar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
   ]
 })
-export class FeedComponent  implements OnInit {
-  posts: PostFeed[] = testFeed;
+export class communityComponent  implements OnInit {
+  posts: PostCommunity[] = testCommunity;
   destroy$: Subject<void> = new Subject();
-  title: string = 'Feed';
+  title: string = 'Community';
 
   constructor(
     private activatedRoute: ActivatedRoute,

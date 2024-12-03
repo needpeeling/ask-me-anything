@@ -1,19 +1,19 @@
 import { Category } from "./category";
 import { Color } from "./color";
-import { UserAskMe, UserPostFeed } from "./user";
+import { UserAskMe, UserCommunity } from "./user";
 
-export type PostFeed = {
+export type PostCommunity = {
     id: number;
-    user: UserPostFeed;
+    user: UserCommunity;
     title: string;
     categories: Category[];
     color: string;
     preview: string;
 }
 
-export type PostFeedView = {
+export type PostCommunityView = {
     id: number;
-    user: UserPostFeed;
+    user: UserCommunity;
     title: string;
     categories: Category[];
     color: Color;

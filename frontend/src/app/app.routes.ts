@@ -1,18 +1,18 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AskMeComponent } from './components/ask-me/ask-me.component';
-import { FeedComponent } from './components/feed/feed.component';
+import { communityComponent } from './components/community/community.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 export const routes: Routes = [
   { 
     path: '', 
-    redirectTo: 'feed', 
+    redirectTo: 'community', 
     pathMatch: 'full' 
   },
   {
-    path: 'feed',
-    component: FeedComponent
+    path: 'community',
+    component: communityComponent
     // loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {

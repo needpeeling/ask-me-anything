@@ -6,7 +6,7 @@ import {
 import { addIcons } from 'ionicons';
 import { arrowBack, arrowBackCircle } from 'ionicons/icons';
 import { testViewPost } from 'src/app/data/test/posts';
-import { PostFeedView } from 'src/app/types/post';
+import { PostCommunityView } from 'src/app/types/post';
 
 @Component({
   selector: 'app-view-post',
@@ -20,7 +20,7 @@ import { PostFeedView } from 'src/app/types/post';
 })
 export class ViewPostComponent {
   title: string = 'View Post'
-  post: PostFeedView = testViewPost;
+  post: PostCommunityView = testViewPost;
 
   constructor(
     private modalController: ModalController

@@ -1,4 +1,4 @@
-import { PostAskMe, PostFeed, PostFeedView } from "src/app/types/post"
+import { PostAskMe, PostCommunity, PostCommunityView } from "src/app/types/post"
 
 export const testAskMe: PostAskMe[] = [
   {
@@ -68,7 +68,7 @@ export const testAskMe: PostAskMe[] = [
   }
 ]
 
-export const testViewPost: PostFeedView = {
+export const testViewPost: PostCommunityView = {
   id: 1,
   user: {
     id: 1,
@@ -89,7 +89,7 @@ export const testViewPost: PostFeedView = {
   color: 'primary'
 };
 
-export const testFeed: PostFeed[] = [
+export const testCommunity: PostCommunity[] = [
     {
       id: 1,
       user: {
