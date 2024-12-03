@@ -1,105 +1,45 @@
 import { Component } from '@angular/core';
 import { TitleService } from 'src/app/services/shared/title.service';
-import { Post } from 'src/app/types/post';
-import { IonContent, IonCardSubtitle, IonAvatar, IonCardHeader, IonCard, IonCardTitle, IonCardContent, IonChip } from "@ionic/angular/standalone";
+import { IonContent, IonTabButton, IonLabel, IonTabBar, ScrollCustomEvent } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
+import { FeedComponent } from "../feed/feed.component";
+import { AskMeComponent } from "../ask-me/ask-me.component";
+import { ActivatedRoute, Router } from '@angular/router';
+import { HomeTabSelection } from 'src/app/types/home';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [
-    IonChip,
-    IonContent,
-    IonAvatar,
-    CommonModule,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent
-  ]
+  imports: [IonTabBar, IonLabel, IonTabButton,
+    IonContent, CommonModule, FeedComponent, AskMeComponent]
 })
 export class HomeComponent {
   title: string = 'Home';
-  posts: Post[] = [
-    {
-      id: 1,
-      user: {
-        name: 'John'
-      },
-      title: 'How to become a successful entrepreneur',
-      preview: 'This guide will help you build a successful business from scratch.',
-      categories: [
-        {
-          name: 'ama',
-          label: 'Ask Me Anything',
-        },
-        {
-          name: 'job',
-          label: 'Job',
-        }
-      ],
-      color: 'primary'
-    },
-    {
-      id: 2,
-      user: {
-        name: 'Jane'
-      },
-      title: 'The importance of networking',
-      preview: 'Discover how networking can help you grow and build your network.',
-      categories: [
-        {
-          name: 'ama',
-          label: 'Ask Me Anything',
-        },
-      ],
-      color: 'secondary'
-    },
-    {
-      id: 3,
-      user: {
-        name: 'Mike'
-      },
-      title: 'I was in the psychiatry for two months',
-      preview: 'When I was 14 years old I lived for two months in a psychiatry and shared together with ...',
-      categories: [
-        {
-          name: 'ama',
-          label: 'Ask Me Anything',
-        }
-      ],
-      color: 'tertiary'
-    },
-    {
-      id: 4,
-      user: {
-        name: 'Emily'
-      },
-      title: 'The world of fashion',
-      preview: 'I started my fashion journey when I was 18 years old. I have been wearing clothes for 20 years now.',
-      categories: [
-        {
-          name: 'ama',
-          label: 'Ask Me Anything',
-        },
-        {
-          name: 'fashion',
-          label: 'Fashion',
-        }
-      ],
-      color: 'success'
-    }
-  ];
+  lastScrollTop = 0;
+  tabBarTransform = 'translateY(0)';
+  currentTab: HomeTabSelection = 'feed';
 
   constructor(
-    private titleService: TitleService
-  ) {
-  }
+    private titleService: TitleService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ionViewWillEnter() {
     this.titleService.setTitle(this.title);
+    this.currentTab = this.activatedRoute.snapshot.queryParams['tab'];
+  }
+
+  navigateToTab(tab: HomeTabSelection) {
+    this.router.navigate([], { queryParams: { tab: tab } });
+    this.currentTab = tab;
+  }
+
+  onScroll(event: ScrollCustomEvent) {
+    const currentScrollTop = event.detail.scrollTop;
+    this.tabBarTransform = currentScrollTop > this.lastScrollTop ? 'translateY(-100%)' : 'translateY(0)';
+    this.lastScrollTop = currentScrollTop;
   }
 }

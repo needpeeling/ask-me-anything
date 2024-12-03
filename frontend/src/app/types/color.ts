@@ -1,0 +1,1 @@
+export type Color =  "danger" | "dark" | "light" | "medium" | "primary" | "secondary" | "success" | "tertiary" | "warning";

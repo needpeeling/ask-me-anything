@@ -1,0 +1,30 @@
+@for(post of posts; track post.id) {
+  <ion-card [color]="post.user.color">
+    <div class="div-card-avatar ion-padding">
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+    </div>
+    <div class="div-card-content">
+      <ion-card-header>
+        <ion-card-title>{{ post.user.job }}</ion-card-title>
+        <ion-card-subtitle>Located in {{ post.user.location }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        {{ post.user.description }}
+        <div class="div-achievements">
+          @for(achievement of post.user.achievements; track achievement.id) {
+            <ion-button size="small" color="dark" [id]="'u' + post.user.id + 'a' + achievement.id">
+              <ion-icon slot="icon-only" [name]="achievement.icon"></ion-icon>
+            </ion-button>
+            <ion-popover [trigger]="'u' + post.user.id + 'a' + achievement.id" triggerAction="click">
+              <ng-template>
+                <span class="ion-padding span-achievement-tooltip">{{ achievement.name }}</span>
+              </ng-template>
+            </ion-popover>
+          }
+        </div>
+      </ion-card-content>
+    </div>
+  </ion-card>
+}

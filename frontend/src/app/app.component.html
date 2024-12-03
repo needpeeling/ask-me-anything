@@ -1,6 +1,6 @@
 <ion-app>
   <ion-tabs>
-    <ion-header [translucent]="true">
+    <ion-header >
       <ion-toolbar>
         <ion-title>{{titleService.title }}</ion-title>
       </ion-toolbar>
@@ -10,7 +10,7 @@
         <ion-icon aria-hidden="true" name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>
-      <ion-tab-button (click)="openModal()">
+      <ion-tab-button (click)="createPost()">
         <ion-icon aria-hidden="true" name="add"></ion-icon>
         <ion-label>Post</ion-label>
       </ion-tab-button>

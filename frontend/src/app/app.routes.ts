@@ -17,5 +17,10 @@ export const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
     // loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
-  }
+  },
+  // {
+  //   path: 'post/:id',
+  //   redirectTo: '/home', // Redirect to home
+  //   pathMatch: 'full',
+  // },
 ];

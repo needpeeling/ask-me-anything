@@ -21,7 +21,7 @@ export class AppComponent {
     addIcons({ home, add, chatbubble, person });
   }
 
-  async openModal() {
+  async createPost() {
     const modal = await this.modalController.create({
       component: CreatePostComponent,
     });

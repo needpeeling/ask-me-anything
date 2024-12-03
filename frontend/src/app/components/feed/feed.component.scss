@@ -1,0 +1,47 @@
+@use '../../../theme/colors';
+
+ion-card {
+    margin: 0;
+    border-radius: 0;
+
+    ion-avatar {
+        right: 25px;
+        z-index: 2;
+        top: 0;
+        transform: scale(.8);
+    }
+
+    ion-chip {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        margin: 0;
+    }
+}
+
+ion-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.div-card-avatar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+ion-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+.div-categories {
+    display: flex;
+    gap: 10px;
+}
+
+ion-card-title {
+    font-size: 1.25rem;
+}
