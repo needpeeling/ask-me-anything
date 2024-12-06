@@ -8,34 +8,31 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonInput,
-  IonSelect,
-  IonSelectOption,
-  IonTextarea
+  IonTextarea,
+  NavParams,
+  IonCheckbox
 } from '@ionic/angular/standalone';
-import { Category } from 'src/app/types/category';
+import { Color } from 'src/app/types/color';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.scss'],
+  selector: 'app-comment',
+  templateUrl: './comment.component.html',
+  styleUrls: ['./comment.component.scss'],
   standalone: true,
-  imports: [ 
+  imports: [
+    IonCheckbox, 
     IonHeader,
     IonToolbar,
     IonTitle,
     IonButton,
     IonButtons,
     IonContent,
-    IonInput,
-    IonSelect,
-    IonSelectOption,
     ReactiveFormsModule,
     FormsModule,
     IonTextarea
   ]
 })
-export class CreatePostComponent  implements OnInit {
+export class CommentComponent  implements OnInit {
   form: FormGroup = new FormGroup({
     title: new FormControl(''),
     content: new FormControl(''),
@@ -43,19 +40,32 @@ export class CreatePostComponent  implements OnInit {
     categories: new FormControl(),
   });
   isPageReady: WritableSignal<boolean> = signal(false);
-  categories: Category[] = [];
+  postComment!: string;
+  postId!: number;
+  color!: Color;
 
   constructor(
-    private modalController: ModalController
-  ) {}
+    private modalController: ModalController,
+    private navParams: NavParams
+  ) {
+    this.postComment = this.navParams.get('postContent');
+    this.postId = this.navParams.get('postId');
+    this.color = this.navParams.get('color');
+  }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData(): void {
-    this.isPageReady.set(true);
+    // this.getUser()
+    // .pipe(
+    //   tak
+    // )
+    // this.isPageReady.set(true);
   }
+
+  // getUser(): ;
 
   cancel(): Promise<boolean> {
     return this.modalController.dismiss(null, 'cancel');

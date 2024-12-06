@@ -1,15 +1,16 @@
 import { Achievement } from "./achievement";
 
-export type UserCore = {
+export type User = {
+    id: number;
+    name: string;
+    job: string;
+    description: string;
+    location: string;
+    achievements: Achievement[];
+    anonymous: boolean;
+};
+export type UserPost = {
     id: number;
     name: string;
     job: string;
 };
-
-export type UserPost = UserCore;
-
-export type UserProfile = UserCore & {
-    description: string;
-    location: string;
-    achievements: Achievement[];
-}

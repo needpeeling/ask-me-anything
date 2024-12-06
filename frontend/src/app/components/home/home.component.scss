@@ -22,11 +22,6 @@ ion-card-header {
     justify-content: space-between;
 }
 
-.div-card-avatar {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
 
 ion-card-content {
     display: flex;
@@ -35,15 +30,24 @@ ion-card-content {
     overflow: auto;
 }
 
-ion-buttons {
-    display: flex;
-    gap: 8px;
-
-    ion-button {
-        --border-width: 0;
-    }
+ion-buttons ion-button {
+    --border-width: 0;
 }
 
 ion-card-title {
     font-size: 1.25rem;
+}
+
+.div-card-avatar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.btn-filter {
+    margin-left: -42px;
+}
+
+.logo {
+    margin-right: -42px;
 }

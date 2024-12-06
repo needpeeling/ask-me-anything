@@ -1,0 +1,70 @@
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Filters</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+@if (isPageReady()) {
+  <ion-content>
+    <ion-list [inset]="true">
+      <ion-item [button]="true" [detail]="false" id="select-categories">
+        <ion-label>Categories</ion-label>
+        <div slot="end" id="selected-categories">{{ selectedCategoriesText }}</div>
+      </ion-item>
+      <ion-item [button]="true" [detail]="false" id="select-fields">
+        <ion-label>Fields</ion-label>
+        <div slot="end" id="selected-fields">{{ selectedFieldsText }}</div>
+      </ion-item>
+      <ion-item [button]="true" [detail]="false" id="select-countries">
+        <ion-label>Countries</ion-label>
+        <div slot="end" id="selected-countries">{{ selectedCountriesText }}</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-modal trigger="select-categories" #modal_categories>
+    <ng-template>
+      <app-typeahead
+        class="ion-page"
+        title="Categories"
+        [items]="categoryItems"
+        [selectedItems]="selectedCategories"
+        (selectionChange)="categoriesSelectionChanged($event); modal_categories.dismiss()"
+        (selectionCancel)="modal_categories.dismiss()"
+      ></app-typeahead>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal trigger="select-fields" #modal_fields>
+    <ng-template>
+      <app-typeahead
+        class="ion-page"
+        title="Fields"
+        [items]="fieldItems"
+        [selectedItems]="selectedFields"
+        (selectionChange)="fieldsSelectionChanged($event); modal_fields.dismiss()"
+        (selectionCancel)="modal_fields.dismiss()"
+      ></app-typeahead>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal trigger="select-countries" #modal_countries>
+    <ng-template>
+      <app-typeahead
+        class="ion-page"
+        title="Countries"
+        [items]="countryItems"
+        [selectedItems]="selectedCountries"
+        (selectionChange)="countriesSelectionChanged($event); modal_countries.dismiss()"
+        (selectionCancel)="modal_countries.dismiss()"
+      ></app-typeahead>
+    </ng-template>
+  </ion-modal>
+}

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Comment</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+@if (isPageReady()) {
+  <ion-content [color]="color">
+    <div class="div-post-comment ion-padding">{{ postComment }}</div>
+    <form [formGroup]="form" class="ion-padding">
+      <ion-textarea formControlName="content" auto-grow label-placement="stacked" label="Comment" placeholder="Your comment"></ion-textarea>
+      <ion-checkbox color="light" justify="space-between">I want to stay anonymous</ion-checkbox>
+    </form>
+  </ion-content>
+}

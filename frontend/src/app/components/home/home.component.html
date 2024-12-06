@@ -1,30 +1,83 @@
-<ion-content>
-  @for(post of posts; track post.id) {
-    <ion-card [color]="post.color" (click)="navigateToPost(post.id)">
-      <ion-card-header>
-        <div>
-          <ion-card-subtitle>{{ post.user.job }}</ion-card-subtitle>
-          <ion-card-title>{{ post.title }}</ion-card-title>
-        </div>
-        <div class="div-card-avatar">
-          <ion-avatar>
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-        </div>
-      </ion-card-header>
-      <ion-card-content>
-        {{ post.preview }}
-        <ion-buttons slot="secondary">
-          <ion-button fill="outline">
-            <ion-icon slot="start" name="heart-outline"></ion-icon>
-            {{ post.actions.likes }}
-          </ion-button>
-          <ion-button fill="outline">
-            <ion-icon slot="start" name="chatbox-outline"></ion-icon>
-            {{ post.actions.comments }}
-          </ion-button>
-        </ion-buttons>
-      </ion-card-content>
-    </ion-card>
-  }
-</ion-content>
+<!-- <ion-header>
+  <form [formGroup]="form">
+    <ion-select formControlName="categories" aria-label="Categories" placeholder="Categories" [multiple]="true">
+      @for (category of categories; track category) {
+        <ion-select-option [value]="category.name">{{ category.label }}</ion-select-option>
+      }
+    </ion-select>
+    <ion-select
+      aria-label="Countries"
+      placeholder="Countries"
+      [multiple]="true"
+    >
+      <ion-select-option value="apples">Apples</ion-select-option>
+    </ion-select>
+    <ion-select
+      aria-label="Fields"
+      placeholder="Fields"
+      [multiple]="true"
+    >
+      <ion-select-option value="apples">Apples</ion-select-option>
+    </ion-select>
+  </form>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="logo">
+      <ion-button>
+        <ion-icon slot="icon-only" name="prism" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-segment [value]="currentSegment" (ionChange)="switchSegment($event)">
+      <ion-segment-button value="best-of" content-id="best-of">
+        <ion-label>Best Of</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="for-you" content-id="for-you">
+        <ion-label>For You</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    @if(currentSegment == 'for-you') {
+      <ion-buttons slot="end" class="btn-filter">
+        <ion-button (click)="filterForYou()">
+          <ion-icon slot="icon-only" name="filter-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment-view>
+  <ion-segment-content id="best-of">
+    @for(post of posts; track post.id) {
+      <ion-card [color]="post.category.color" (click)="navigateToPost(post.id)">
+        <ion-card-header>
+          <div>
+            <ion-card-subtitle>{{ post.user.job }}</ion-card-subtitle>
+            <ion-card-title>{{ post.title }}</ion-card-title>
+          </div>
+          <div class="div-card-avatar">
+            <ion-avatar>
+              <img alt="Avatar" [src]="post.anonymous ? 'assets/avatar/anonymous.webp' : 'assets/avatar/identified.webp'" />
+            </ion-avatar>
+          </div>
+        </ion-card-header>
+        <ion-card-content>
+          {{ post.preview }}
+          <ion-buttons slot="secondary">
+            <ion-button fill="outline" (click)="like(post); $event.stopPropagation()">
+              <ion-icon slot="start" [name]="post.liked ? 'heart' : 'heart-outline'"></ion-icon>
+              {{ post.actions.likes }}
+            </ion-button>
+            <ion-button fill="outline">
+              <ion-icon slot="start" name="chatbox-outline"></ion-icon>
+              {{ post.actions.comments }}
+            </ion-button>
+          </ion-buttons>
+        </ion-card-content>
+      </ion-card>
+    }
+  </ion-segment-content>
+  <ion-segment-content id="for-you">
+
+  </ion-segment-content>
+</ion-segment-view>

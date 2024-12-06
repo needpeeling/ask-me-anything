@@ -2,18 +2,13 @@ ion-card {
     margin: 0;
     border-radius: 0;
     height: 100%;
+    overflow-y: auto;
 
     ion-avatar {
         right: 25px;
         z-index: 2;
         top: 0;
         transform: scale(.8);
-    }
-
-    ion-chip {
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        margin: 0;
     }
 }
 
@@ -27,15 +22,11 @@ ion-card-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
 }
 
-ion-buttons {
-    display: flex;
-    gap: 8px;
-
-    ion-button {
-        --border-width: 0;
-    }
+ion-buttons ion-button {
+    --border-width: 0;
 }
 
 ion-card-title {
@@ -46,4 +37,22 @@ ion-card-title {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+
+.comment-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 20px;
+    border-top: 1px solid white;
+
+    ion-chip {
+        width: fit-content;
+        --color: white;
+        border: 1px solid white;
+    }
+}
+
+ion-footer ion-button {
+    margin: 0;
 }

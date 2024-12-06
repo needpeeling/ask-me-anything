@@ -1,5 +1,4 @@
 import { Category } from "./category";
-import { Color } from "./color";
 import { UserPost } from "./user";
 
 export type Post = {
@@ -7,8 +6,10 @@ export type Post = {
     user: UserPost;
     title: string;
     actions: PostActions;
-    color: string;
+    category: Category;
     preview: string;
+    liked: boolean;
+    anonymous: boolean;
 };
 
 export type PostView = {
@@ -16,11 +17,23 @@ export type PostView = {
     user: UserPost;
     title: string;
     actions: PostActions;
-    color: Color;
+    category: Category;
     content: string;
+    comments: PostComment[];
+    liked: boolean;
+    anonymous: boolean;
 };
 
-type PostActions = {
+export type PostActions = {
     comments: number;
     likes: number;
-}
+};
+
+export type PostComment = {
+    id: number;
+    content: string;
+    likes: number;
+    user: UserPost;
+    liked: boolean;
+    anonymous: boolean;
+};
