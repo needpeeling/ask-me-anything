@@ -36,4 +36,5 @@ export type PostComment = {
     user: UserPost;
     liked: boolean;
     anonymous: boolean;
+    star: boolean;
 };

@@ -32,7 +32,8 @@ export const testPostView: PostView = {
       content: 'I agree with John, the key is to stay consistent and learn from your mistakes.',
       likes: 5,
       liked: false,
-      anonymous: false
+      anonymous: false,
+      star: true
     },
     {
       id: 2,
@@ -44,7 +45,8 @@ export const testPostView: PostView = {
       content: 'Persistence and engaging with your audience are critical for success in any field.',
       likes: 12,
       liked: false,
-      anonymous: true
+      anonymous: true,
+      star: false
     },
     {
       id: 3,
@@ -56,7 +58,8 @@ export const testPostView: PostView = {
       content: 'I think having a clear goal and strategy helps streamline the process.',
       likes: 8,
       liked: false,
-      anonymous: true
+      anonymous: true,
+      star: false
     },
     {
       id: 4,
@@ -68,7 +71,8 @@ export const testPostView: PostView = {
       content: 'Visual consistency can greatly enhance your brand identity.',
       likes: 10,
       liked: false,
-      anonymous: true
+      anonymous: true,
+      star: false
     },
     {
       id: 5,
@@ -80,7 +84,8 @@ export const testPostView: PostView = {
       content: 'Don’t forget to optimize for search engines; it makes a world of difference.',
       likes: 6,
       liked: false,
-      anonymous: true
+      anonymous: true,
+      star: false
     }
   ]
 };

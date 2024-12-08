@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, ViewChild, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import {
@@ -12,6 +12,8 @@ import {
   NavParams,
   IonCheckbox
 } from '@ionic/angular/standalone';
+import { finalize } from 'rxjs';
+import { UserLogicService } from 'src/app/services/logic/user-logic.service';
 import { Color } from 'src/app/types/color';
 
 @Component({
@@ -33,20 +35,21 @@ import { Color } from 'src/app/types/color';
   ]
 })
 export class CommentComponent  implements OnInit {
-  form: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    content: new FormControl(''),
-    tags: new FormControl(''),
-    categories: new FormControl(),
-  });
+  @ViewChild('contentTextarea', {static: false}) contentTextarea!: { setFocus: () => void; };
+
   isPageReady: WritableSignal<boolean> = signal(false);
   postComment!: string;
   postId!: number;
   color!: Color;
+  form: FormGroup = new FormGroup({
+    anonymous: new FormControl(),
+    content: new FormControl(''),
+  });
 
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private userLogicService: UserLogicService
   ) {
     this.postComment = this.navParams.get('postContent');
     this.postId = this.navParams.get('postId');
@@ -58,14 +61,20 @@ export class CommentComponent  implements OnInit {
   }
 
   getData(): void {
-    // this.getUser()
-    // .pipe(
-    //   tak
-    // )
-    // this.isPageReady.set(true);
+    this.userLogicService.getUser()
+    .subscribe({
+      next: (user) => {
+        this.form.get('anonymous')?.patchValue(user.anonymous);
+        this.isPageReady.set(true);
+        this.setFocusOnContent();
+      },
+      error: (error) => console.error(error)
+    })
   }
 
-  // getUser(): ;
+  setFocusOnContent(): void {
+    setTimeout(() => this.contentTextarea.setFocus(), 0);
+  }
 
   cancel(): Promise<boolean> {
     return this.modalController.dismiss(null, 'cancel');

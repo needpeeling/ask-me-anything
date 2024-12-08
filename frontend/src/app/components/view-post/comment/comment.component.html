@@ -13,8 +13,8 @@
   <ion-content [color]="color">
     <div class="div-post-comment ion-padding">{{ postComment }}</div>
     <form [formGroup]="form" class="ion-padding">
-      <ion-textarea formControlName="content" auto-grow label-placement="stacked" label="Comment" placeholder="Your comment"></ion-textarea>
-      <ion-checkbox color="light" justify="space-between">I want to stay anonymous</ion-checkbox>
+      <ion-checkbox formControlName="anonymous" color="light" justify="space-between">I want to stay anonymous</ion-checkbox>
+      <ion-textarea #contentTextarea formControlName="content" auto-grow label-placement="stacked" label="Comment" placeholder="Your comment"></ion-textarea>
     </form>
   </ion-content>
 }

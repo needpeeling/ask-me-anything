@@ -5,7 +5,7 @@ import {
   IonButton, IonIcon, IonLabel, IonChip
 } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
-import { arrowBack, arrowBackCircle, chatboxOutline, heart, heartOutline } from 'ionicons/icons';
+import { arrowBack, arrowBackCircle, chatboxOutline, heart, heartOutline, star } from 'ionicons/icons';
 import { testPostView } from 'src/app/data/test/posts';
 import { PostComment, PostView } from 'src/app/types/post';
 import { CommentComponent } from './comment/comment.component';
@@ -21,13 +21,12 @@ import { CommentComponent } from './comment/comment.component';
   ]
 })
 export class ViewPostComponent {
-  title: string = 'View Post'
   post: PostView = testPostView;
 
   constructor(
     private modalController: ModalController
   ) {
-    addIcons({ arrowBackCircle, arrowBack, chatboxOutline, heartOutline, heart });
+    addIcons({ arrowBackCircle, arrowBack, chatboxOutline, heartOutline, heart, star });
   }
 
   ionViewWillEnter() {}

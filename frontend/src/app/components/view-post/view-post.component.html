@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="home" (click)="close()"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ title }}</ion-title>
+    <ion-title>View Post</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-card [color]="post.category.color">
@@ -42,11 +42,16 @@
           <ion-label>{{ comment.anonymous ? 'Anonymous' : comment.user.name }}</ion-label>
         </ion-chip>
         {{ comment.content }}
-        <ion-buttons slot="secondary">
-          <ion-button fill="outline" (click)="likeComment(comment)">
+        <ion-buttons slot="start">
+          <ion-button fill="outline" (click)="likeComment(comment)" aria-label="Like this comment">
             <ion-icon slot="start" [name]="comment.liked ? 'heart' : 'heart-outline'"></ion-icon>
             {{ comment.likes }}
           </ion-button>
+          @if(comment.star) {
+            <ion-button aria-hidden="true" color="warning">
+              <ion-icon name="star"></ion-icon>
+            </ion-button>
+          }
         </ion-buttons>
       </div>
     }

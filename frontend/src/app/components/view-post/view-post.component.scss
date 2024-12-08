@@ -47,9 +47,10 @@ ion-card-title {
     border-top: 1px solid white;
 
     ion-chip {
-        width: fit-content;
+        padding: 0 0 0 6px;
+        margin: 0;
         --color: white;
-        border: 1px solid white;
+        border: none;
     }
 }
 

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/angular/standalone";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss'],
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss'],
   standalone: true,
   imports: [
     IonHeader,
@@ -13,7 +13,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/angular/stan
     IonContent
   ]
 })
-export class ChatComponent{
+export class NotificationsComponent{
   constructor(
   ) { }
 
